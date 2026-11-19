@@ -35,3 +35,8 @@ JavaScript (JS) is a programming language used to make websites interactive and 
 - Display movie recommendations
 - Navigate between categories
 - Update the interface dynamically
+
+chapter 1
+variables and Data types
+
+* console.log is used to print a message to consoloe 
