@@ -67,3 +67,14 @@ Variables are Containers for data
 Note :- in let consider this example 
 let a;
 console.log(a); --> Here if I don't provide any value to 'a' then by default it return "undefined" value 
+
+Here we have another concepts called "Block" . And Block means Curly braces--> { }
+ ex:- {
+    let a = 5;
+    consoloe.log(a); 
+    }
+    and here we cannot re-define the same in let but the same name can be redefine in another block 
+    {
+        let a = 23;
+        consoloe.log(a);
+    }
