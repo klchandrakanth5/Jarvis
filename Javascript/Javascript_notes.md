@@ -63,3 +63,7 @@ Variables are Containers for data
 - `var` → Can be redeclared and updated.
 - `let` → Cannot be redeclared, but can be updated.
 - `const` → Cannot be redeclared or reassigned.
+
+Note :- in let consider this example 
+let a;
+console.log(a); --> Here if I don't provide any value to 'a' then by default it return "undefined" value 
