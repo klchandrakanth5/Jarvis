@@ -40,3 +40,5 @@ chapter 1
 variables and Data types
 
 * console.log is used to print a message to consoloe 
+
+Variables are Containers for data 
