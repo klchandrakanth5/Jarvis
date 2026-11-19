@@ -51,3 +51,15 @@ Variables are Containers for data
 | **Redeclaration**                | ✅ Allowed          | ❌ Not allowed in same scope | ❌ Not allowed in same scope   |
 | **Must initialize immediately?** | ❌ No               | ❌ No                        | ✅ Yes                         |
 | **Recommended usage**            | Avoid in modern JS | Use when value changes      | Use when value doesn't change |
+
+| Feature         | `var`                      | `let`                         | `const`                       |
+| --------------- | -------------------------- | ----------------------------- | ----------------------------- |
+| **Declaration** | Variable can be redeclared | Variable cannot be redeclared | Variable cannot be redeclared |
+| **Update**      | Variable can be updated    | Variable can be updated       | Variable cannot be updated    |
+| **Scope**       | Global/Function scope      | Block scope                   | Block scope                   |
+
+**Simple explanation:**
+
+- `var` → Can be redeclared and updated.
+- `let` → Cannot be redeclared, but can be updated.
+- `const` → Cannot be redeclared or reassigned.
