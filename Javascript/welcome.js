@@ -1,2 +1,1 @@
-const age = 12;
-console.log(age);
+console.log("welcome to the world of JS");
