@@ -42,3 +42,12 @@ variables and Data types
 * console.log is used to print a message to consoloe 
 
 Variables are Containers for data 
+
+| Feature                          | `var`              | `let`                       | `const`                       |
+| -------------------------------- | ------------------ | --------------------------- | ----------------------------- |
+| **Introduced**                   | Older JavaScript   | ES6 (2015)                  | ES6 (2015)                    |
+| **Scope**                        | Function scope     | Block scope                 | Block scope                   |
+| **Reassignment**                 | ✅ Allowed          | ✅ Allowed                   | ❌ Not allowed                 |
+| **Redeclaration**                | ✅ Allowed          | ❌ Not allowed in same scope | ❌ Not allowed in same scope   |
+| **Must initialize immediately?** | ❌ No               | ❌ No                        | ✅ Yes                         |
+| **Recommended usage**            | Avoid in modern JS | Use when value changes      | Use when value doesn't change |
