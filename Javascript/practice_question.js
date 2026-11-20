@@ -18,3 +18,12 @@ const profile ={
 
 };
 console.log(profile["username"]);
+
+let number = prompt("Enter the number :\n");
+if(number % 5 == 0)
+{
+    console.log("Divisible");
+}
+else{
+    console.log("Not divisible");
+}
