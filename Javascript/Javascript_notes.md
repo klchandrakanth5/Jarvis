@@ -317,3 +317,7 @@ toLocaleLowerCase()
 ```
 
 **Important:** JavaScript strings are immutable. String methods generally return a new string rather than modifying the original string.
+
+          Arrays in JS
+An array is a collections of items
+
