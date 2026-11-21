@@ -1,31 +1,53 @@
-CSS is a language that is used to descrive the "Style" of a document
+# **CSS Notes**
 
-Basic Syntax
+## **1. Introduction to CSS**
 
+CSS (Cascading Style Sheets) is a language used to describe the **style and appearance** of a document.
 
-h1{
-    color : red;
+## **2. Basic Syntax**
+
+```
+h1 {
+    color: red;
 }
+```
 
-h1 ->  Selector
-color ->  Property
-red ->  value
+### **Components of CSS Syntax**
 
+| Component | Description |
+| --------- | ----------- |
+| `h1`      | Selector    |
+| `color`   | Property    |
+| `red`     | Value       |
 
-Including Style in CSS
+## **3. Including CSS in HTML**
 
-1. Inline
-<h1 style = "color":"red" >Ram</h1>
+CSS can be included in an HTML document in three ways:
 
-Style Tag
+### **1. Inline CSS**
+
+CSS is written directly inside an HTML element using the `style` attribute.
+
+```
+<h1 style="color: red;">Ram</h1>
+```
+
+### **2. Internal CSS (Style Tag)**
+
+CSS is written inside the `<style>` tag within the HTML document.
+
+```
 <style>
-    h1{
-        color:red;
+    h1 {
+        color: red;
     }
 </style>
+```
 
-External Stylesheet 
-Writing CSS in sepearte document 
+### **3. External CSS**
 
-Color Property 
-Used to set the color of foreground
+CSS is written in a separate file and linked to the HTML document.
+
+## **4. Color Property**
+
+The `color` property is used to set the **foreground color** of an element.
