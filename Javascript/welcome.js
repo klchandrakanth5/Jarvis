@@ -1,1 +1,2 @@
-console.log("welcome to the world of JS");
+let x;
+alert(typeof(x));

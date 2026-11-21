@@ -1,10 +1,10 @@
 // We have two types of Data Types 1.Primitive 2.Non - Primitive 
 
 //Primitive(7)
-// 1. Numbers 2. String 3.Boolean 4.Undefined 5. null 6.Bigint 7.Symbol 8.Symbol
-let num  = 12;
-console.log(typeof(num));
-let name = "Ram";
+// 1. Numbers 2. String 3.Boolean 4.Undefined 5. null 6.Bigint 7.Symbol 
+let num  = 12;         
+console.log(typeof(num));                   
+let name = 'Ram';
 console.log(typeof(name));
 let isfollow = true;
 console.log(typeof(isfollow));
