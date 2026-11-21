@@ -39,10 +39,63 @@ Imagine you're building a Django project.
 > **Git = Tracks and manages code changes.**\
 > **GitHub = Stores and shares your code online.**
 
-| Feature           | Unstaged Changes                                                        | Staged Changes                                               |
-| ----------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
-| **Meaning**       | Changes made to files but not added to the staging area.                | Changes added to the staging area and prepared for a commit. |
-| **Location**      | Working Directory                                                       | Staging Area                                                 |
-| **Git Command**   | `git status`                                                            | `git add`                                                    |
-| **Purpose**       | Represents modifications that are not yet selected for the next commit. | Represents modifications selected for the next commit.       |
-| **Commit Status** | Not ready to be committed directly.                                     | Ready to be committed.                                       |
+The main difference between **Branching** and **Merging** in Git is:
+
+| Feature         | Branching                                                      | Merging                                    |
+| --------------- | -------------------------------------------------------------- | ------------------------------------------ |
+| **Meaning**     | Creating a separate line of development                        | Combining changes from different branches  |
+| **Purpose**     | Work on features independently without affecting the main code | Bring changes from one branch into another |
+| **Git Command** | `git branch <branch-name>`                                     | `git merge <branch-name>`                  |
+| **When used**   | Before starting new feature development                        | After completing work on a branch          |
+| **Example**     | Create a `login` branch                                        | Merge `login` branch into `main`           |
+
+### **Simple Example**
+
+Imagine you have a project:
+
+```
+main
+```
+
+### **1. Branching**
+
+You create a new branch to work on a login feature:
+
+```
+git branch login
+```
+
+Now you have two branches:
+
+```
+main
+  |
+  |------ login
+```
+
+You can work on the `login` branch without affecting the `main` branch.
+
+### **2. Merging**
+
+After completing the login feature, you want to add those changes to `main`.
+
+First, switch to `main`:
+
+```
+git checkout main
+```
+
+Then merge the `login` branch:
+
+```
+git merge login
+```
+
+Now the changes from `login` are combined into `main`.
+
+### **Remember this**
+
+> **Branching = Create a separate path for development.**\
+> **Merging = Combine changes from separate paths.**
+
+Branching separates the work; merging brings the work together.
