@@ -38,3 +38,11 @@ Imagine you're building a Django project.
 
 > **Git = Tracks and manages code changes.**\
 > **GitHub = Stores and shares your code online.**
+
+| Feature           | Unstaged Changes                                                        | Staged Changes                                               |
+| ----------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **Meaning**       | Changes made to files but not added to the staging area.                | Changes added to the staging area and prepared for a commit. |
+| **Location**      | Working Directory                                                       | Staging Area                                                 |
+| **Git Command**   | `git status`                                                            | `git add`                                                    |
+| **Purpose**       | Represents modifications that are not yet selected for the next commit. | Represents modifications selected for the next commit.       |
+| **Commit Status** | Not ready to be committed directly.                                     | Ready to be committed.                                       |
