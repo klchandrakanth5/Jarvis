@@ -3224,3 +3224,5 @@ sort()
 
 If you understand these deeply and can solve problems using them, you will have a **strong foundation in JavaScript Arrays**.
 
+                            FUNCTIONS 
+       A Function is Block of code in which it is used to perfrom specfic task                            
