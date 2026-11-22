@@ -483,3 +483,12 @@ Focus on these seven settings first:
 These are especially useful when learning how Django projects are configured.
 
 **My advice:** Don't try to memorize all these settings. Understand what each one controls and why Django needs it. That's what will help you when building real backend applications.
+
+                          Diffrence Between Path and Re-path
+            | `path()`                                                       | `re_path()`                                                         |
+| -------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Used to define URL patterns using simple and readable syntax.  | Used to define URL patterns using Regular Expressions (Regex).      |
+| Easy to understand and write.                                  | More complex because it uses Regex patterns.                        |
+| Uses converters like `int`, `str`, `slug`, `uuid`, and `path`. | Uses Regex patterns like `[0-9]+`, `\w+`, and `.*`.                 |
+| Best for most Django URL patterns.                             | Best when complex URL matching is required.                         |
+| **Example:** `path('student/<int:id>/', views.student)`        | **Example:** `re_path(r'^student/(?P<id>[0-9]+)/$', views.student)` |
