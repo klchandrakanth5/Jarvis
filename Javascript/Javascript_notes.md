@@ -4214,3 +4214,2734 @@ Real-world uses of reduce()
 - Count occurrences of elements.
 - Convert an array into an object.
 - Calculate averages.
+
+# **1. What is DOM?**
+
+**DOM (Document Object Model)** is a programming interface that represents an HTML document as a **tree structure of objects**, allowing JavaScript to access and modify the webpage's content, structure, and styles.
+
+In simple words:
+
+> **DOM is the connection between HTML and JavaScript that allows JavaScript to interact with a webpage.**
+
+# **2. What is the exact use of DOM?**
+
+The main purpose of DOM is to allow JavaScript to **dynamically interact with HTML elements**.
+
+Without DOM, JavaScript cannot easily change the webpage after it has been loaded.
+
+Using DOM, we can:
+
+- Change text on a webpage.
+- Change CSS styles.
+- Add new HTML elements.
+- Remove existing HTML elements.
+- Change HTML attributes.
+- Respond to user actions such as clicks and typing.
+
+# **3. How DOM works — Neat Diagram**
+
+Imagine you have this HTML:
+
+```
+<html>
+    <body>
+        <h1>Hello World</h1>
+        <button>Click Me</button>
+    </body>
+</html>
+```
+
+The browser converts this HTML into a DOM tree.
+
+**HTML Document**
+
+**DOM Tree**
+
+Browser represents HTML as objects
+
+**html**
+
+**body**
+
+**h1**
+
+Hello World
+
+**button**
+
+Click Me
+
+**JavaScript**
+
+Accesses and modifies DOM elements
+
+# **4. Where is DOM used?**
+
+DOM is used in **frontend web development** whenever a webpage needs to change dynamically.
+
+### **Real-time examples**
+
+| Situation                   | Use of DOM                |
+| --------------------------- | ------------------------- |
+| User clicks a button        | Change button text        |
+| User submits a form         | Display success message   |
+| User searches for a product | Display search results    |
+| User adds an item to cart   | Update cart items         |
+| User clicks Dark Mode       | Change webpage appearance |
+| User deletes a task         | Remove task from webpage  |
+| User types in search box    | Display suggestions       |
+
+### **Real-time example**
+
+Suppose a webpage contains:
+
+```
+<h1>Hello User</h1>
+<button>Click Me</button>
+```
+
+JavaScript can use the DOM to change the heading when the button is clicked:
+
+```
+document.querySelector("button").addEventListener("click", function () {
+    document.querySelector("h1").innerText = "Welcome!";
+});
+```
+
+**Before clicking:**
+
+## **Hello User**
+
+Click Me
+
+**After clicking:**
+
+## **Welcome!**
+
+Click Me
+
+The HTML file itself doesn't need to be reloaded. JavaScript changes the webpage through the DOM.
+
+**Remember this:** HTML creates the webpage → Browser creates the DOM → JavaScript uses the DOM to modify the webpage.
+
+
+# **2. Selecting HTML Elements in DOM**
+
+Before JavaScript can modify an HTML element, it must first **select that element**.
+
+For example, if you want to change the text of a heading, JavaScript needs to identify which heading you want to modify.
+
+There are different methods to select HTML elements.
+
+## **A.&#x20;**`getElementById()`
+
+**Definition:** Selects an HTML element using its unique `id`.
+
+### **HTML**
+
+```
+<h1 id="heading">Hello World</h1>
+```
+
+### **JavaScript**
+
+```
+let heading = document.getElementById("heading");
+
+console.log(heading);
+```
+
+### **Real-time example**
+
+Suppose you want to change the heading text:
+
+```
+let heading = document.getElementById("heading");
+
+heading.innerText = "Welcome to JavaScript";
+```
+
+The webpage changes from:
+
+**Hello World**
+
+to:
+
+**Welcome to JavaScript**
+
+### **Why do we use it?**
+
+When we need to select a **specific element** using its unique ID.
+
+## **B.&#x20;**`getElementsByClassName()`
+
+**Definition:** Selects HTML elements using their class name.
+
+### **HTML**
+
+```
+<p class="text">Paragraph 1</p>
+<p class="text">Paragraph 2</p>
+<p class="text">Paragraph 3</p>
+```
+
+### **JavaScript**
+
+```
+let paragraphs = document.getElementsByClassName("text");
+
+console.log(paragraphs);
+```
+
+It selects all three paragraph elements.
+
+To access one particular paragraph:
+
+```
+console.log(paragraphs[0]);
+```
+
+To change all paragraphs:
+
+```
+for (let paragraph of paragraphs) {
+    paragraph.style.color = "blue";
+}
+```
+
+### **Why do we use it?**
+
+When we want to select **multiple elements having the same class**.
+
+## **C.&#x20;**`getElementsByTagName()`
+
+**Definition:** Selects HTML elements using their tag name.
+
+### **HTML**
+
+```
+<p>Paragraph 1</p>
+<p>Paragraph 2</p>
+<p>Paragraph 3</p>
+```
+
+### **JavaScript**
+
+```
+let paragraphs = document.getElementsByTagName("p");
+
+console.log(paragraphs);
+```
+
+This selects all `<p>` elements.
+
+### **Real-time example**
+
+Change the color of all paragraphs:
+
+```
+let paragraphs = document.getElementsByTagName("p");
+
+for (let paragraph of paragraphs) {
+    paragraph.style.color = "red";
+}
+```
+
+### **Why do we use it?**
+
+When we want to select elements based on their **HTML tag**.
+
+## **Summary**
+
+| Method                     | Used to select          |
+| -------------------------- | ----------------------- |
+| `getElementById()`         | Element using ID        |
+| `getElementsByClassName()` | Elements using class    |
+| `getElementsByTagName()`   | Elements using tag name |
+
+Next, we can learn `querySelector()`**&#x20;and&#x20;**`querySelectorAll()`.
+
+# **3.&#x20;**`querySelector()`**&#x20;and&#x20;**`querySelectorAll()`
+
+These are modern methods used to select HTML elements using **CSS selectors**.
+
+They are very useful because you can select elements using IDs, classes, tags, attributes, and other CSS selectors.
+
+## **A.&#x20;**`querySelector()`
+
+**Definition:** Selects the **first HTML element** that matches the specified CSS selector.
+
+### **Syntax**
+
+```
+document.querySelector("selector");
+```
+
+### **1. Selecting by ID**
+
+HTML:
+
+```
+<h1 id="heading">Hello World</h1>
+```
+
+JavaScript:
+
+```
+let heading = document.querySelector("#heading");
+
+console.log(heading);
+```
+
+`#` is used to select an ID.
+
+### **2. Selecting by Class**
+
+HTML:
+
+```
+<p class="text">Paragraph 1</p>
+<p class="text">Paragraph 2</p>
+```
+
+JavaScript:
+
+```
+let paragraph = document.querySelector(".text");
+
+console.log(paragraph);
+```
+
+`.` is used to select a class.
+
+**Important:** Even though two paragraphs have the same class, `querySelector()` selects only the **first matching element**.
+
+### **3. Selecting by Tag**
+
+HTML:
+
+```
+<p>Paragraph 1</p>
+<p>Paragraph 2</p>
+```
+
+JavaScript:
+
+```
+let paragraph = document.querySelector("p");
+
+console.log(paragraph);
+```
+
+It selects the first `<p>` element.
+
+## **B.&#x20;**`querySelectorAll()`
+
+**Definition:** Selects **all HTML elements** that match the specified CSS selector.
+
+### **Syntax**
+
+```
+document.querySelectorAll("selector");
+```
+
+### **Example**
+
+HTML:
+
+```
+<p class="text">Paragraph 1</p>
+<p class="text">Paragraph 2</p>
+<p class="text">Paragraph 3</p>
+```
+
+JavaScript:
+
+```
+let paragraphs = document.querySelectorAll(".text");
+
+console.log(paragraphs);
+```
+
+It selects all three paragraphs.
+
+### **Real-time example**
+
+Suppose you want to change the color of all paragraphs:
+
+```
+let paragraphs = document.querySelectorAll(".text");
+
+paragraphs.forEach(function (paragraph) {
+    paragraph.style.color = "blue";
+});
+```
+
+All three paragraphs become blue.
+
+## **Difference between&#x20;**`querySelector()`**&#x20;and&#x20;**`querySelectorAll()`
+
+| Method               | What it selects        | Example                              |
+| -------------------- | ---------------------- | ------------------------------------ |
+| `querySelector()`    | First matching element | `document.querySelector(".text")`    |
+| `querySelectorAll()` | All matching elements  | `document.querySelectorAll(".text")` |
+
+### **Remember**
+
+```
+querySelector()
+```
+
+➡️ **One element**
+
+```
+querySelectorAll()
+```
+
+➡️ **All matching elements**
+
+Both methods use **CSS selector syntax**.
+
+| Selector     | Meaning               |
+| ------------ | --------------------- |
+| `"#heading"` | Select by ID          |
+| `".text"`    | Select by class       |
+| `"p"`        | Select by tag         |
+| `"button"`   | Select buttons        |
+| `"input"`    | Select input elements |
+
+That's the next part of DOM element selection.
+
+# **JavaScript DOM — 10 Important Concepts for Real-World Development**
+
+These are the core DOM concepts commonly used when building interactive web applications.
+
+# **1.&#x20;**`querySelector()`**&#x20;and&#x20;**`querySelectorAll()`
+
+### **Definition**
+
+These methods are used to **select HTML elements from the DOM using CSS selectors**.
+
+### `querySelector()`
+
+Selects the **first matching element**.
+
+### **Real-time example: Selecting a login button**
+
+HTML:
+
+```
+<button class="login-btn">Login</button>
+```
+
+JavaScript:
+
+```
+let button = document.querySelector(".login-btn");
+
+console.log(button);
+```
+
+Here, JavaScript selects the login button using its class.
+
+### `querySelectorAll()`
+
+Selects **all matching elements**.
+
+HTML:
+
+```
+<p class="message">Hello</p>
+<p class="message">Welcome</p>
+<p class="message">Good Morning</p>
+```
+
+JavaScript:
+
+```
+let messages = document.querySelectorAll(".message");
+
+messages.forEach(function (message) {
+    console.log(message.innerText);
+});
+```
+
+### **Real-time use**
+
+- Selecting buttons
+- Selecting input fields
+- Selecting product cards
+- Selecting navigation elements
+- Selecting multiple elements to modify them
+
+# **2.&#x20;**`innerText`**,&#x20;**`textContent`**, and&#x20;**`innerHTML`
+
+These properties are used to **read or change the content inside HTML elements**.
+
+## **A.&#x20;**`innerText`
+
+**Definition:** Gets or sets the visible text content of an HTML element.
+
+HTML:
+
+```
+<h1 id="heading">Hello World</h1>
+```
+
+JavaScript:
+
+```
+let heading = document.querySelector("#heading");
+
+heading.innerText = "Welcome to JavaScript";
+```
+
+Output on webpage:
+
+```
+Welcome to JavaScript
+```
+
+### **Real-time use**
+
+Changing button text after clicking:
+
+```
+button.innerText = "Submitted";
+```
+
+## **B.&#x20;**`textContent`
+
+**Definition:** Gets or sets the text content of an element and its descendants.
+
+HTML:
+
+```
+<div id="container">
+    <h1>Hello</h1>
+    <p>Welcome</p>
+</div>
+```
+
+JavaScript:
+
+```
+let container = document.querySelector("#container");
+
+console.log(container.textContent);
+```
+
+Output:
+
+```
+Hello
+Welcome
+```
+
+Changing it:
+
+```
+container.textContent = "New content";
+```
+
+## **C.&#x20;**`innerHTML`
+
+**Definition:** Gets or sets the HTML content inside an element.
+
+HTML:
+
+```
+<div id="container"></div>
+```
+
+JavaScript:
+
+```
+let container = document.querySelector("#container");
+
+container.innerHTML = "<h1>Hello</h1><p>Welcome</p>";
+```
+
+Now the browser creates actual HTML elements inside the container.
+
+### **Difference**
+
+| Property      | Use                      |
+| ------------- | ------------------------ |
+| `innerText`   | Read/change visible text |
+| `textContent` | Read/change text content |
+| `innerHTML`   | Read/change HTML content |
+
+### **Real-time use**
+
+Displaying dynamically generated content, messages, product information, etc.
+
+⚠️ Avoid inserting untrusted user input directly using `innerHTML`, because it can create XSS security vulnerabilities.
+
+# **3.&#x20;**`value`
+
+### **Definition**
+
+The `value` property is used to **get or change the value entered inside form elements**, such as input fields.
+
+### **Real-time example: Login form**
+
+HTML:
+
+```
+<input type="text" id="username" placeholder="Enter username">
+
+<button id="loginBtn">Login</button>
+```
+
+JavaScript:
+
+```
+let username = document.querySelector("#username");
+let button = document.querySelector("#loginBtn");
+
+button.addEventListener("click", function () {
+
+    console.log(username.value);
+
+});
+```
+
+If the user enters:
+
+```
+Rahul
+```
+
+JavaScript gets:
+
+```
+"Rahul"
+```
+
+### **Changing the input value**
+
+```
+username.value = "Chandrakanth";
+```
+
+The input field will now contain `Chandrakanth`.
+
+### **Real-time use**
+
+- Login forms
+- Registration forms
+- Search boxes
+- Contact forms
+- User input validation
+
+# **4.&#x20;**`getAttribute()`**&#x20;and&#x20;**`setAttribute()`
+
+These methods are used to **read and modify HTML attributes**.
+
+HTML attributes are values written inside HTML tags.
+
+Example:
+
+```
+<img src="profile.jpg" alt="Profile Image">
+```
+
+Here, `src` and `alt` are attributes.
+
+## **A.&#x20;**`getAttribute()`
+
+### **Definition**
+
+Gets the value of a specified HTML attribute.
+
+### **Example**
+
+HTML:
+
+```
+<img id="profile" src="profile.jpg" alt="Profile">
+```
+
+JavaScript:
+
+```
+let image = document.querySelector("#profile");
+
+console.log(image.getAttribute("src"));
+```
+
+Output:
+
+```
+profile.jpg
+```
+
+## **B.&#x20;**`setAttribute()`
+
+### **Definition**
+
+Sets or changes the value of an HTML attribute.
+
+### **Example**
+
+```
+let image = document.querySelector("#profile");
+
+image.setAttribute("src", "new-profile.jpg");
+```
+
+The image changes to `new-profile.jpg`.
+
+### **Real-time use**
+
+Changing:
+
+- Image URLs
+- Link destinations
+- Input placeholders
+- Input types
+- Button attributes
+
+Example:
+
+```
+let input = document.querySelector("#username");
+
+input.setAttribute("placeholder", "Enter your name");
+```
+
+# **5.&#x20;**`style`
+
+### **Definition**
+
+The `style` property is used to **change CSS styles directly using JavaScript**.
+
+### **Real-time example: Changing button appearance**
+
+HTML:
+
+```
+<button id="button">Click Me</button>
+```
+
+JavaScript:
+
+```
+let button = document.querySelector("#button");
+
+button.style.backgroundColor = "blue";
+button.style.color = "white";
+button.style.padding = "10px";
+```
+
+Now the button has:
+
+- Blue background
+- White text
+- Padding
+
+### **Real-time use**
+
+- Changing colors
+- Hiding elements
+- Showing elements
+- Changing dimensions
+- Creating dynamic UI effects
+
+Example:
+
+```
+let message = document.querySelector("#message");
+
+message.style.display = "none";
+```
+
+This hides the element.
+
+# **6.&#x20;**`classList`
+
+### **Definition**
+
+`classList` is used to **add, remove, toggle, or check CSS classes on an HTML element using JavaScript**.
+
+This is widely used because changing CSS classes is generally cleaner than manually changing multiple styles.
+
+## **A.&#x20;**`classList.add()`
+
+Adds a CSS class.
+
+HTML:
+
+```
+<div id="box"></div>
+```
+
+CSS:
+
+```
+.active {
+    background-color: green;
+    color: white;
+}
+```
+
+JavaScript:
+
+```
+let box = document.querySelector("#box");
+
+box.classList.add("active");
+```
+
+## **B.&#x20;**`classList.remove()`
+
+Removes a CSS class.
+
+```
+box.classList.remove("active");
+```
+
+## **C.&#x20;**`classList.toggle()`
+
+Adds a class if it doesn't exist; removes it if it already exists.
+
+```
+box.classList.toggle("active");
+```
+
+### **Real-time example: Dark mode**
+
+HTML:
+
+```
+<button id="darkModeBtn">Dark Mode</button>
+```
+
+CSS:
+
+```
+.dark {
+    background-color: black;
+    color: white;
+}
+```
+
+JavaScript:
+
+```
+let button = document.querySelector("#darkModeBtn");
+
+button.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
+});
+```
+
+Every time the user clicks the button, dark mode is enabled or disabled.
+
+### **Real-time use**
+
+- Dark mode
+- Active navigation links
+- Dropdown menus
+- Modal windows
+- Selected buttons
+- Form error states
+
+# **7.&#x20;**`createElement()`
+
+### **Definition**
+
+`createElement()` is used to **create a new HTML element dynamically using JavaScript**.
+
+### **Real-time example: Creating a new product card**
+
+JavaScript:
+
+```
+let product = document.createElement("div");
+
+product.innerText = "Laptop";
+```
+
+This creates:
+
+```
+<div>Laptop</div>
+```
+
+However, the element is not yet displayed on the webpage.
+
+You need to add it to the DOM.
+
+### **Real-time use**
+
+- Creating product cards
+- Creating task items
+- Creating notifications
+- Creating comments
+- Creating list items dynamically
+
+# **8.&#x20;**`append()`**&#x20;and&#x20;**`remove()`
+
+These methods are used to **add elements to the DOM and remove elements from the DOM**.
+
+## **A.&#x20;**`append()`
+
+### **Definition**
+
+Adds content or elements at the end of a parent element.
+
+HTML:
+
+```
+<ul id="studentList"></ul>
+```
+
+JavaScript:
+
+```
+let studentList = document.querySelector("#studentList");
+
+let student = document.createElement("li");
+
+student.innerText = "Rahul";
+
+studentList.append(student);
+```
+
+Result:
+
+```
+<ul id="studentList">
+    <li>Rahul</li>
+</ul>
+```
+
+### **Real-time use**
+
+Adding:
+
+- Students
+- Tasks
+- Products
+- Comments
+- Notifications
+
+## **B.&#x20;**`remove()`
+
+### **Definition**
+
+Removes an HTML element from the DOM.
+
+HTML:
+
+```
+<li id="student">Rahul</li>
+```
+
+JavaScript:
+
+```
+let student = document.querySelector("#student");
+
+student.remove();
+```
+
+The student element disappears from the webpage.
+
+### **Real-time use**
+
+- Delete a todo task
+- Remove a product from a cart
+- Delete a notification
+- Remove a comment
+
+# **9.&#x20;**`addEventListener()`
+
+### **Definition**
+
+`addEventListener()` is used to **listen for user actions or browser events and execute JavaScript code when that event occurs**.
+
+### **Syntax**
+
+```
+element.addEventListener("event", function () {
+    // Code to execute
+});
+```
+
+### **Real-time example: Button click**
+
+HTML:
+
+```
+<button id="button">Click Me</button>
+```
+
+JavaScript:
+
+```
+let button = document.querySelector("#button");
+
+button.addEventListener("click", function () {
+    alert("Button clicked!");
+});
+```
+
+When the user clicks the button, the function executes.
+
+### **Common events used in development**
+
+| Event       | When it occurs              |
+| ----------- | --------------------------- |
+| `click`     | User clicks an element      |
+| `input`     | User types or changes input |
+| `submit`    | User submits a form         |
+| `change`    | Input value changes         |
+| `keydown`   | User presses a keyboard key |
+| `mouseover` | Mouse moves over an element |
+| `mouseout`  | Mouse leaves an element     |
+
+### **Real-time example: Live search**
+
+HTML:
+
+```
+<input type="text" id="search" placeholder="Search products">
+
+<p id="result"></p>
+```
+
+JavaScript:
+
+```
+let search = document.querySelector("#search");
+let result = document.querySelector("#result");
+
+search.addEventListener("input", function () {
+    result.innerText = search.value;
+});
+```
+
+When the user types, the result updates immediately.
+
+# **10.&#x20;**`event.target`**&#x20;and&#x20;**`preventDefault()`
+
+These are important when handling events.
+
+## **A.&#x20;**`event.target`
+
+### **Definition**
+
+`event.target` identifies **the actual HTML element on which the event occurred**.
+
+### **Real-time example**
+
+HTML:
+
+```
+<button id="button">Click Me</button>
+```
+
+JavaScript:
+
+```
+let button = document.querySelector("#button");
+
+button.addEventListener("click", function (event) {
+    console.log(event.target);
+});
+```
+
+When the button is clicked, `event.target` refers to the clicked button.
+
+### **Real-time use**
+
+Suppose you have multiple buttons:
+
+```
+<button>Delete 1</button>
+<button>Delete 2</button>
+<button>Delete 3</button>
+```
+
+You can identify which button was clicked.
+
+```
+document.querySelectorAll("button").forEach(function (button) {
+
+    button.addEventListener("click", function (event) {
+
+        console.log("Clicked button:", event.target);
+
+    });
+
+});
+```
+
+## **B.&#x20;**`preventDefault()`
+
+### **Definition**
+
+`preventDefault()` is used to **prevent the browser's default behavior for an event**.
+
+### **Real-time example: Form submission**
+
+Normally, when a form is submitted, the browser may reload the page or navigate to another URL.
+
+HTML:
+
+```
+<form id="loginForm">
+
+    <input type="text" id="username" placeholder="Username">
+
+    <button type="submit">Login</button>
+
+</form>
+```
+
+JavaScript:
+
+```
+let form = document.querySelector("#loginForm");
+
+form.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    console.log("Form submitted");
+
+});
+```
+
+### **What happens?**
+
+Normally:
+
+```
+User clicks Submit
+       ↓
+Browser performs default form submission
+       ↓
+Page may reload
+```
+
+With `preventDefault()`:
+
+```
+User clicks Submit
+       ↓
+JavaScript receives submit event
+       ↓
+preventDefault()
+       ↓
+Browser's default submission is stopped
+       ↓
+JavaScript handles the form
+```
+
+### **Real-time use**
+
+- Login forms
+- Registration forms
+- Search forms
+- AJAX requests
+- Form validation
+- SPA applications
+
+# **Final DOM Concepts — Quick Revision**
+
+| Concept              | Definition                            | Real-world use           |
+| -------------------- | ------------------------------------- | ------------------------ |
+| `querySelector()`    | Selects first matching element        | Select a button          |
+| `querySelectorAll()` | Selects all matching elements         | Select all product cards |
+| `innerText`          | Reads/changes visible text            | Update button text       |
+| `textContent`        | Reads/changes text content            | Display messages         |
+| `innerHTML`          | Reads/changes HTML content            | Dynamically render HTML  |
+| `value`              | Gets/sets input value                 | Login form               |
+| `getAttribute()`     | Gets attribute value                  | Get image URL            |
+| `setAttribute()`     | Changes attribute value               | Change image URL         |
+| `style`              | Changes CSS directly                  | Hide/show elements       |
+| `classList`          | Manipulates CSS classes               | Dark mode                |
+| `createElement()`    | Creates HTML elements                 | Create product cards     |
+| `append()`           | Adds content/elements                 | Add todo task            |
+| `remove()`           | Removes element                       | Delete todo task         |
+| `addEventListener()` | Listens for events                    | Button click             |
+| `event.target`       | Identifies the event's target element | Identify clicked button  |
+| `preventDefault()`   | Stops default browser behavior        | Prevent form reload      |
+
+## **The most important real-world DOM workflow**
+
+```
+// 1. Select an element
+let button = document.querySelector("#button");
+
+// 2. Listen for user action
+button.addEventListener("click", function (event) {
+
+    // 3. Get user input
+    let input = document.querySelector("#input");
+
+    // 4. Create a new element
+    let paragraph = document.createElement("p");
+
+    // 5. Add content
+    paragraph.innerText = input.value;
+
+    // 6. Add element to webpage
+    document.querySelector("#container").append(paragraph);
+
+    // 7. Clear input
+    input.value = "";
+
+});
+```
+
+This pattern is the **foundation of interactive JavaScript webpages**:
+
+**Select → Listen → Get Data → Manipulate → Update DOM**
+
+For modern frontend development, these are the DOM concepts worth understanding well before moving to React or other frontend frameworks.
+                     
+                              EVENTS IN JS
+                              Phase 1: Core Concepts
+1. What is an Event?
+2. What is Event Handling?
+3. How JavaScript responds to user interactions
+4. Common Events
+
+
+Phase 2: Event Listeners
+1. addEventListener()
+2. Event listener syntax
+3. Passing functions
+4. Anonymous and named functions
+5. removeEventListener()
+
+Phase 3: Event Object
+1. Event Object
+2. event.target
+3. event.currentTarget
+4. event.type
+5. preventDefault()
+6. stopPropagation()
+7. Keyboard properties
+
+Phase 4: Event Propagation
+1. Event Propagation
+2. Event Bubbling
+3. Event Capturing
+4. Event propagation order
+
+Phase 5: Event Delegation
+1. Event Delegation
+2. event.target
+3. closest()
+4. Dynamic elements
+5. Real-world applications
+
+Phase 6: Form Events
+1. submit
+2. input
+3. change
+4. focus
+5. blur
+6. Form validation
+
+Phase 7: Advanced Concepts
+1. Debouncing
+2. Throttling
+3. Event listener performance
+4. Memory leaks
+5. Best practices
+                               
+                               Class and Objects
+# **Classes and Objects in JavaScript**
+
+Let's learn **Classes and Objects in JavaScript** from the basics, with simple definitions, practical examples, and complete code that you can run.
+
+Since you're learning JavaScript for real-world development, I'll focus on **how classes and objects are actually used in applications**, rather than just theory.
+
+## **1. What is an Object?**
+
+An **object** is a collection of properties and methods that represent a real-world entity.
+
+- **Properties** → Data or information about an object.
+- **Methods** → Functions or actions that an object can perform.
+
+### **Real-world example**
+
+Imagine a student:
+
+| Property | Value            |
+| -------- | ---------------- |
+| name     | Rahul            |
+| age      | 21               |
+| course   | Computer Science |
+
+Actions the student can perform:
+
+- Study
+- Attend class
+- Write exams
+
+In JavaScript, we can represent this using an object.
+
+```
+const student = {
+    name: "Rahul",
+    age: 21,
+    course: "Computer Science",
+
+    study() {
+        console.log(`${this.name} is studying`);
+    }
+};
+
+console.log(student.name);
+console.log(student.age);
+
+student.study();
+```
+
+### **Output**
+
+```
+Rahul
+21
+Rahul is studying
+```
+
+Here:
+
+```
+name: "Rahul"
+```
+
+is a property.
+
+And:
+
+```
+study() {
+    console.log(`${this.name} is studying`);
+}
+```
+
+is a method.
+
+## **2. What is a Class?**
+
+A **class is a blueprint or template used to create objects.**
+
+Imagine you are developing a student management application.
+
+You need to create hundreds of student objects:
+
+```
+const student1 = {
+    name: "Rahul",
+    age: 21,
+    course: "Python"
+};
+
+const student2 = {
+    name: "Priya",
+    age: 22,
+    course: "Java"
+};
+
+const student3 = {
+    name: "Amit",
+    age: 20,
+    course: "JavaScript"
+};
+```
+
+Notice the problem: every time we create a student, we have to write the same structure again.
+
+This is repetitive code.
+
+Instead, we can create a **class** that acts as a blueprint for all students.
+
+Blueprint
+
+**Student Class**
+
+- Name
+- Age
+- Course
+- Study()
+- DisplayDetails()
+
+**Student 1**
+
+Rahul
+
+21 years
+
+**Student 2**
+
+Priya
+
+22 years
+
+**Student 3**
+
+Amit
+
+20 years
+
+The class defines the structure, and objects are created from that structure.
+
+## **3. How to Create a Class in JavaScript**
+
+### **Syntax**
+
+```
+class ClassName {
+
+}
+```
+
+Example:
+
+```
+class Student {
+
+}
+```
+
+Here, `Student` is a class.
+
+However, this class currently contains nothing.
+
+Let's add properties and methods.
+
+## **4. The&#x20;**`constructor()`**&#x20;Method**
+
+The `constructor()` is a special method that automatically executes when we create a new object from a class.
+
+It is commonly used to initialize the object's properties.
+
+### **Example**
+
+```
+class Student {
+
+    constructor(name, age, course) {
+
+        this.name = name;
+        this.age = age;
+        this.course = course;
+
+    }
+
+}
+```
+
+Let's understand this carefully.
+
+### **What is&#x20;**`constructor`**?**
+
+```
+constructor(name, age, course)
+```
+
+It receives values when an object is created.
+
+### **What is&#x20;**`this`**?**
+
+`this` refers to the **current object being created or used**.
+
+```
+this.name = name;
+```
+
+The left side:
+
+```
+this.name
+```
+
+represents the object's property.
+
+The right side:
+
+```
+name
+```
+
+represents the value received from the constructor parameter.
+
+Therefore:
+
+```
+this.name = name;
+```
+
+means:
+
+> Store the received name inside the current object's name property.
+
+Similarly:
+
+```
+this.age = age;
+this.course = course;
+```
+
+## **5. Creating Objects Using a Class**
+
+Now we have our class.
+
+```
+class Student {
+
+    constructor(name, age, course) {
+
+        this.name = name;
+        this.age = age;
+        this.course = course;
+
+    }
+
+}
+```
+
+To create objects from this class, we use the `new` keyword.
+
+```
+const student1 = new Student("Rahul", 21, "Python");
+
+const student2 = new Student("Priya", 22, "Java");
+
+const student3 = new Student("Amit", 20, "JavaScript");
+```
+
+### **Complete code**
+
+```
+class Student {
+
+    constructor(name, age, course) {
+
+        this.name = name;
+        this.age = age;
+        this.course = course;
+
+    }
+
+}
+
+const student1 = new Student("Rahul", 21, "Python");
+
+const student2 = new Student("Priya", 22, "Java");
+
+const student3 = new Student("Amit", 20, "JavaScript");
+
+console.log(student1);
+console.log(student2);
+console.log(student3);
+```
+
+### **Output**
+
+```
+Student {
+    name: "Rahul",
+    age: 21,
+    course: "Python"
+}
+
+Student {
+    name: "Priya",
+    age: 22,
+    course: "Java"
+}
+
+Student {
+    name: "Amit",
+    age: 20,
+    course: "JavaScript"
+}
+```
+
+Each object has its own data.
+
+```
+student1.name  // Rahul
+student2.name  // Priya
+student3.name  // Amit
+```
+
+But all three objects were created using the same class.
+
+## **6. What is the&#x20;**`new`**&#x20;Keyword?**
+
+The `new` keyword is used to create a new object from a class.
+
+```
+const student1 = new Student("Rahul", 21, "Python");
+```
+
+Conceptually, JavaScript performs these steps:
+
+1. Creates a new empty object.
+2. Connects the object to the class's prototype.
+3. Executes the constructor.
+4. Assigns the object's properties.
+5. Returns the newly created object.
+
+You don't need to manually perform these steps.
+
+Just remember:
+
+```
+new ClassName(arguments);
+```
+
+creates a new object from a class.
+
+## **7. Methods Inside a Class**
+
+A class can contain methods that define the actions objects can perform.
+
+### **Example**
+
+```
+class Student {
+
+    constructor(name, age, course) {
+
+        this.name = name;
+        this.age = age;
+        this.course = course;
+
+    }
+
+    study() {
+        console.log(`${this.name} is studying ${this.course}`);
+    }
+
+    attendClass() {
+        console.log(`${this.name} is attending the class`);
+    }
+
+    displayDetails() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Age: ${this.age}`);
+        console.log(`Course: ${this.course}`);
+    }
+
+}
+
+const student1 = new Student("Rahul", 21, "Python");
+
+student1.study();
+student1.attendClass();
+student1.displayDetails();
+```
+
+### **Output**
+
+```
+Rahul is studying Python
+Rahul is attending the class
+Name: Rahul
+Age: 21
+Course: Python
+```
+
+### **Important**
+
+We call methods using the object name:
+
+```
+student1.study();
+```
+
+Not:
+
+```
+Student.study();
+```
+
+Because `study()` is an **instance method**, meaning it belongs to objects created from the class.
+
+## **8. Understanding&#x20;**`this`**&#x20;with Multiple Objects**
+
+This is one of the most important concepts.
+
+```
+class Student {
+
+    constructor(name) {
+        this.name = name;
+    }
+
+    introduce() {
+        console.log(`My name is ${this.name}`);
+    }
+
+}
+
+const student1 = new Student("Rahul");
+const student2 = new Student("Priya");
+
+student1.introduce();
+student2.introduce();
+```
+
+### **Output**
+
+```
+My name is Rahul
+My name is Priya
+```
+
+Why does the same method produce different output?
+
+Because:
+
+```
+student1.introduce();
+```
+
+Inside the method:
+
+```
+this.name
+```
+
+refers to:
+
+```
+student1.name
+```
+
+And when we call:
+
+```
+student2.introduce();
+```
+
+`this.name` refers to:
+
+```
+student2.name
+```
+
+### **Simple rule**
+
+| Method called using    | `this` refers to |
+| ---------------------- | ---------------- |
+| `student1.introduce()` | `student1`       |
+| `student2.introduce()` | `student2`       |
+| `employee1.display()`  | `employee1`      |
+
+## **9. Real-Time Example: Employee Management System**
+
+Let's create a class that represents employees in a company.
+
+Each employee has:
+
+- Employee ID
+- Name
+- Department
+- Salary
+
+And each employee can:
+
+- Display details
+- Get a salary increment
+- Display updated salary
+
+### **Complete code**
+
+```
+class Employee {
+
+    constructor(id, name, department, salary) {
+
+        this.id = id;
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+
+    }
+
+    displayDetails() {
+
+        console.log("Employee ID:", this.id);
+        console.log("Name:", this.name);
+        console.log("Department:", this.department);
+        console.log("Salary:", this.salary);
+
+    }
+
+    increaseSalary(amount) {
+
+        this.salary = this.salary + amount;
+
+        console.log(`${this.name}'s salary increased by ${amount}`);
+
+    }
+
+    displaySalary() {
+
+        console.log(`Current Salary: ${this.salary}`);
+
+    }
+
+}
+
+const employee1 = new Employee(
+    101,
+    "Rahul",
+    "Backend Development",
+    30000
+);
+
+const employee2 = new Employee(
+    102,
+    "Priya",
+    "Frontend Development",
+    35000
+);
+
+employee1.displayDetails();
+
+console.log("----------------");
+
+employee1.increaseSalary(5000);
+
+employee1.displaySalary();
+```
+
+### **Output**
+
+```
+Employee ID: 101
+Name: Rahul
+Department: Backend Development
+Salary: 30000
+
+----------------
+
+Rahul's salary increased by 5000
+
+Current Salary: 35000
+```
+
+### **What happened here?**
+
+Initially:
+
+```
+employee1.salary = 30000;
+```
+
+Then we called:
+
+```
+employee1.increaseSalary(5000);
+```
+
+Inside the method:
+
+```
+this.salary = this.salary + amount;
+```
+
+This becomes:
+
+```
+30000 + 5000
+```
+
+Therefore:
+
+```
+employee1.salary = 35000;
+```
+
+The object's data is modified.
+
+This is how objects can maintain their own state.
+
+## **10. Object State**
+
+**State refers to the current values of an object's properties.**
+
+For example:
+
+```
+const employee1 = new Employee(101, "Rahul", "Backend", 30000);
+```
+
+The current state is:
+
+```
+ID: 101
+Name: Rahul
+Department: Backend
+Salary: 30000
+```
+
+After:
+
+```
+employee1.increaseSalary(5000);
+```
+
+The state changes:
+
+```
+ID: 101
+Name: Rahul
+Department: Backend
+Salary: 35000
+```
+
+The object's state has changed.
+
+This concept is extremely important in application development.
+
+Examples:
+
+- Shopping cart → items and total price
+- Bank account → balance
+- User → name, email, login status
+- Game character → health, score, level
+- Employee → salary, department
+
+## **11. Why Do We Use Classes?**
+
+Imagine building an application without classes.
+
+```
+const employee1 = {
+    name: "Rahul",
+    salary: 30000
+};
+
+const employee2 = {
+    name: "Priya",
+    salary: 35000
+};
+
+const employee3 = {
+    name: "Amit",
+    salary: 40000
+};
+```
+
+You need to create 1,000 employees.
+
+Writing this structure repeatedly is inefficient.
+
+Instead:
+
+```
+class Employee {
+
+    constructor(name, salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+}
+
+const employee1 = new Employee("Rahul", 30000);
+const employee2 = new Employee("Priya", 35000);
+const employee3 = new Employee("Amit", 40000);
+```
+
+Now you can create as many employees as you want using the same blueprint.
+
+### **Benefits of classes**
+
+| Benefit         | Explanation                                        |
+| --------------- | -------------------------------------------------- |
+| Code reuse      | Reuse the same structure                           |
+| Organization    | Keep related data and functions together           |
+| Maintainability | Change the class instead of modifying many objects |
+| Scalability     | Easily create hundreds or thousands of objects     |
+| Encapsulation   | Organize data and behavior together                |
+
+## **12. Class vs Object**
+
+This is a very important interview question.
+
+| Class                                    | Object                                |
+| ---------------------------------------- | ------------------------------------- |
+| Blueprint or template                    | Instance created from a blueprint     |
+| Defines properties and methods           | Contains actual values                |
+| Does not represent a specific individual | Represents a specific entity          |
+| Example: `Student`                       | Example: `student1`                   |
+| Used to create objects                   | Used to access properties and methods |
+
+### **Example**
+
+```
+class Student {
+
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+}
+
+const student1 = new Student("Rahul", 21);
+```
+
+Here:
+
+```
+Student
+```
+
+is the **class**.
+
+```
+student1
+```
+
+is the **object**.
+
+```
+new Student("Rahul", 21)
+```
+
+creates the object.
+
+## **13. Multiple Objects from One Class**
+
+One class can create many objects.
+
+```
+class Car {
+
+    constructor(brand, model, color) {
+
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+
+    }
+
+    start() {
+        console.log(`${this.brand} ${this.model} is starting`);
+    }
+
+}
+
+const car1 = new Car("Toyota", "Fortuner", "Black");
+
+const car2 = new Car("Honda", "City", "White");
+
+const car3 = new Car("BMW", "X5", "Blue");
+
+car1.start();
+car2.start();
+car3.start();
+```
+
+### **Output**
+
+```
+Toyota Fortuner is starting
+Honda City is starting
+BMW X5 is starting
+```
+
+All objects have the same structure but different values.
+
+## **14. Objects Are Independent**
+
+Each object created from a class has its own properties.
+
+```
+class BankAccount {
+
+    constructor(accountHolder, balance) {
+
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+
+    }
+
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+}
+
+const account1 = new BankAccount("Rahul", 10000);
+
+const account2 = new BankAccount("Priya", 20000);
+
+account1.deposit(5000);
+
+console.log(account1.balance);
+console.log(account2.balance);
+```
+
+### **Output**
+
+```
+15000
+20000
+```
+
+When we modify `account1`, `account2` is not affected.
+
+Why?
+
+Because each object has its own independent property values.
+
+## **15. Real-Time Example: Shopping Cart**
+
+This is a practical example of classes and objects.
+
+Imagine an e-commerce application.
+
+A shopping cart needs to:
+
+- Store products
+- Add products
+- Remove products
+- Calculate total price
+- Display cart contents
+
+### **Complete code**
+
+```
+class ShoppingCart {
+
+    constructor() {
+
+        this.products = [];
+
+    }
+
+    addProduct(name, price) {
+
+        const product = {
+            name: name,
+            price: price
+        };
+
+        this.products.push(product);
+
+        console.log(`${name} added to cart`);
+
+    }
+
+    removeProduct(name) {
+
+        this.products = this.products.filter(
+            product => product.name !== name
+        );
+
+        console.log(`${name} removed from cart`);
+
+    }
+
+    calculateTotal() {
+
+        let total = 0;
+
+        for (const product of this.products) {
+
+            total += product.price;
+
+        }
+
+        return total;
+
+    }
+
+    displayCart() {
+
+        console.log("Shopping Cart:");
+
+        for (const product of this.products) {
+
+            console.log(`${product.name} - ₹${product.price}`);
+
+        }
+
+        console.log("Total:", this.calculateTotal());
+
+    }
+
+}
+
+const cart1 = new ShoppingCart();
+
+cart1.addProduct("Laptop", 50000);
+cart1.addProduct("Mouse", 1000);
+cart1.addProduct("Keyboard", 2000);
+
+cart1.displayCart();
+
+cart1.removeProduct("Mouse");
+
+cart1.displayCart();
+```
+
+### **Output**
+
+```
+Laptop added to cart
+Mouse added to cart
+Keyboard added to cart
+
+Shopping Cart:
+
+Laptop - ₹50000
+Mouse - ₹1000
+Keyboard - ₹2000
+
+Total: 53000
+
+Mouse removed from cart
+
+Shopping Cart:
+
+Laptop - ₹50000
+Keyboard - ₹2000
+
+Total: 52000
+```
+
+### **Why is this useful?**
+
+Instead of having separate functions and variables scattered throughout your application, the shopping cart's:
+
+- Data
+- Logic
+- Methods
+
+are organized inside one class.
+
+This is a common pattern in object-oriented programming.
+
+## **16. Constructor with Default Values**
+
+Sometimes you don't want to provide every value when creating an object.
+
+JavaScript allows default values in constructor parameters.
+
+```
+class User {
+
+    constructor(name, role = "User") {
+
+        this.name = name;
+        this.role = role;
+
+    }
+
+    display() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Role: ${this.role}`);
+    }
+
+}
+
+const user1 = new User("Rahul", "Admin");
+
+const user2 = new User("Priya");
+
+user1.display();
+user2.display();
+```
+
+### **Output**
+
+```
+Name: Rahul
+Role: Admin
+
+Name: Priya
+Role: User
+```
+
+Here:
+
+```
+role = "User"
+```
+
+means:
+
+> If no role is provided, use `"User"` as the default value.
+
+## **17. Static Methods**
+
+A normal method belongs to objects created from the class.
+
+A **static method belongs to the class itself**.
+
+### **Example**
+
+```
+class Calculator {
+
+    static add(a, b) {
+        return a + b;
+    }
+
+}
+
+console.log(Calculator.add(10, 20));
+```
+
+### **Output**
+
+```
+30
+```
+
+Notice:
+
+```
+Calculator.add(10, 20);
+```
+
+We call the method using the class name.
+
+We don't need to create an object.
+
+```
+const calculator = new Calculator();
+```
+
+And normally, we cannot call a static method through an instance:
+
+```
+calculator.add(10, 20); // Error
+```
+
+### **When are static methods useful?**
+
+They are useful when a function is related to the class but doesn't need individual object data.
+
+Examples:
+
+- Utility calculations
+- Validation functions
+- Helper methods
+- Factory methods
+
+## **18. Complete Example: User Class**
+
+Let's combine everything we've learned.
+
+```
+class User {
+
+    constructor(name, email, age) {
+
+        this.name = name;
+        this.email = email;
+        this.age = age;
+
+    }
+
+    displayDetails() {
+
+        console.log("Name:", this.name);
+        console.log("Email:", this.email);
+        console.log("Age:", this.age);
+
+    }
+
+    updateEmail(newEmail) {
+
+        this.email = newEmail;
+
+        console.log("Email updated successfully");
+
+    }
+
+    isAdult() {
+
+        return this.age >= 18;
+
+    }
+
+}
+
+const user1 = new User(
+    "Rahul",
+    "rahul@gmail.com",
+    21
+);
+
+const user2 = new User(
+    "Priya",
+    "priya@gmail.com",
+    17
+);
+
+user1.displayDetails();
+
+user1.updateEmail("rahul123@gmail.com");
+
+console.log(user1.isAdult());
+console.log(user2.isAdult());
+```
+
+### **Output**
+
+```
+Name: Rahul
+Email: rahul@gmail.com
+Age: 21
+
+Email updated successfully
+
+true
+false
+```
+
+This class has:
+
+| Concept     | Example                         |
+| ----------- | ------------------------------- |
+| Class       | `User`                          |
+| Constructor | `constructor(name, email, age)` |
+| Properties  | `name`, `email`, `age`          |
+| Object      | `user1`, `user2`                |
+| Method      | `displayDetails()`              |
+| Method      | `updateEmail()`                 |
+| Method      | `isAdult()`                     |
+| `this`      | Refers to the current object    |
+| `new`       | Creates a new object            |
+
+## **19. How Classes Are Used in Real Applications**
+
+Classes can represent almost anything in software.
+
+**Banking Application**
+
+`BankAccount`
+
+- Balance
+- Account number
+- Deposit()
+- Withdraw()
+
+**E-commerce**
+
+`ShoppingCart`
+
+- Products
+- AddProduct()
+- RemoveProduct()
+- CalculateTotal()
+
+**User Management**
+
+`User`
+
+- Name
+- Email
+- Login()
+- Logout()
+
+**Game Development**
+
+`Player`
+
+- Health
+- Score
+- Move()
+- Attack()
+
+## **20. The Most Important Mental Model**
+
+Remember this:
+
+```
+class Student {
+
+    constructor(name, age) {
+
+        this.name = name;
+        this.age = age;
+
+    }
+
+    study() {
+        console.log(`${this.name} is studying`);
+    }
+
+}
+```
+
+This is the **blueprint**.
+
+Now:
+
+```
+const student1 = new Student("Rahul", 21);
+const student2 = new Student("Priya", 22);
+```
+
+These are **objects created from the blueprint**.
+
+```
+student1.study();
+student2.study();
+```
+
+These objects can use the methods defined inside the class.
+
+### **Visual understanding**
+
+**Class: Student**
+
+Blueprint
+
+Name
+
+Age
+
+Study()
+
+Creates objects using `new`
+
+**student1**
+
+Name: Rahul
+
+Age: 21
+
+**student2**
+
+Name: Priya
+
+Age: 22
+
+## **21. Interview Definition**
+
+**What is a class in JavaScript?**
+
+> A class in JavaScript is a blueprint used to create objects. It defines the properties and methods that objects created from that class can have. The constructor initializes the object's properties, and the `new` keyword is used to create instances of the class.
+
+**What is an object?**
+
+> An object is an instance of a class that contains properties representing its data and methods representing its behavior.
+
+**What is a constructor?**
+
+> A constructor is a special method that automatically executes when a new object is created from a class. It is used to initialize the object's properties.
+
+**What is&#x20;**`this`**?**
+
+> The `this` keyword refers to the current object in the context of an instance method.
+
+## **22. Practice Questions**
+
+Try these without looking at the examples.
+
+### **Practice 1: Product Class**
+
+Create a class called `Product` containing:
+
+- `name`
+- `price`
+- `quantity`
+
+Create a method:
+
+```
+displayProduct()
+```
+
+Create three product objects.
+
+### **Practice 2: Bank Account**
+
+Create a class called `BankAccount`.
+
+Properties:
+
+- Account holder
+- Balance
+
+Methods:
+
+```
+deposit(amount)
+withdraw(amount)
+displayBalance()
+```
+
+The `withdraw()` method should not allow withdrawal if the balance is insufficient.
+
+### **Practice 3: Student**
+
+Create a class called `Student`.
+
+Properties:
+
+- Name
+- Marks
+
+Methods:
+
+```
+displayMarks()
+checkResult()
+```
+
+`checkResult()` should return:
+
+- `"Pass"` if marks are greater than or equal to 35
+- `"Fail"` otherwise
+
+### **Your learning order for Classes and Objects**
+
+1. Object
+2. Class
+3. `constructor()`
+4. `this`
+5. `new` keyword
+6. Properties
+7. Methods
+8. Creating multiple objects
+9. Object state
+10. Static methods
+
+**The most important concepts to master first are&#x20;**`class`**,&#x20;**`constructor`**,&#x20;**`this`**,&#x20;**`new`**, properties, and methods.**
+
+Once these six concepts become clear, classes and objects will become much easier.
+
+
+                                   Callback and Promises
+Understood. You want **only the important concepts first**, without lengthy explanations.
+
+# **Callbacks, Promises & Async/Await — Important Concepts**
+
+| No. | Concept                                    | What you need to learn                                    |
+| --- | ------------------------------------------ | --------------------------------------------------------- |
+| 1   | **Synchronous vs Asynchronous JavaScript** | Difference between synchronous and asynchronous execution |
+| 2   | **Callback Functions**                     | Passing a function as an argument and executing it later  |
+| 3   | **Callback Hell**                          | Nested callbacks and why they become difficult to manage  |
+| 4   | **Promises**                               | What a Promise is and how it works                        |
+| 5   | **Promise States**                         | `pending`, `fulfilled`, `rejected`                        |
+| 6   | `resolve()`**&#x20;and&#x20;**`reject()`   | Completing or failing a Promise                           |
+| 7   | `.then()`                                  | Handling successful Promise results                       |
+| 8   | `.catch()`                                 | Handling errors                                           |
+| 9   | `.finally()`                               | Executing code regardless of success or failure           |
+| 10  | **Promise Chaining**                       | Connecting multiple asynchronous operations               |
+| 11  | `async`                                    | Creating asynchronous functions                           |
+| 12  | `await`                                    | Waiting for Promise results                               |
+| 13  | `try...catch`**&#x20;with Async/Await**    | Error handling in asynchronous code                       |
+| 14  | **Fetch API**                              | Fetching data from APIs                                   |
+| 15  | `Promise.all()`                            | Running multiple Promises concurrently                    |
+
+### **Recommended learning order**
+
+**Synchronous vs Asynchronous**\
+↓\
+**Callbacks**\
+↓\
+**Callback Hell**\
+↓\
+**Promises**\
+↓\
+**Promise States**\
+↓\
+**resolve & reject**\
+↓\
+**then, catch, finally**\
+↓\
+**Promise Chaining**\
+↓\
+**async & await**\
+↓\
+**try...catch**\
+↓\
+**Fetch API**\
+↓\
+**Promise.all()**
+
+We can now learn **one concept at a time**, with a simple definition and one complete real-time code example—without unnecessary explanation.
+
+
+# **Fetch API — Important Concepts to Learn**
+
+## **Concepts**
+
+| No. | Concept                    | What you should know                             |
+| --- | -------------------------- | ------------------------------------------------ |
+| 1   | **What is Fetch API?**     | Used to send and receive data from servers/APIs  |
+| 2   | `fetch()`                  | How to make an HTTP request                      |
+| 3   | **URL**                    | Where the API endpoint is located                |
+| 4   | **Request**                | Data sent from frontend to backend               |
+| 5   | **Response**               | Data received from backend                       |
+| 6   | **HTTP Methods**           | `GET`, `POST`, `PUT`, `PATCH`, `DELETE`          |
+| 7   | **Response Object**        | Understanding the response returned by `fetch()` |
+| 8   | `response.json()`          | Converting API response into JavaScript data     |
+| 9   | **Request Options**        | `method`, `headers`, `body`                      |
+| 10  | **Headers**                | Sending information such as content type         |
+| 11  | **Sending Data**           | Using `JSON.stringify()` to send data            |
+| 12  | **Error Handling**         | Handling network errors using `try...catch`      |
+| 13  | `response.ok`              | Checking whether the HTTP request succeeded      |
+| 14  | **Async/Await with Fetch** | Using `await` to handle API requests             |
+| 15  | **Fetch with DOM**         | Displaying API data on a webpage                 |
+
+## **Real-Time Use Cases**
+
+| Use Case            | What Fetch API Does                      |
+| ------------------- | ---------------------------------------- |
+| Login               | Sends username and password to backend   |
+| Registration        | Sends user registration data             |
+| Product listing     | Retrieves products from server           |
+| Search              | Fetches search results                   |
+| Weather application | Retrieves weather data from an API       |
+| Dashboard           | Retrieves statistics and user data       |
+| CRUD application    | Creates, reads, updates and deletes data |
+| Pagination          | Fetches the next page of data            |
+
+### **Recommended Learning Order**
+
+**1. What is Fetch API?**\
+↓\
+**2.&#x20;**`fetch()`**&#x20;syntax**\
+↓\
+**3. GET request**\
+↓\
+**4. Response object**\
+↓\
+**5.&#x20;**`response.json()`\
+↓\
+**6. Async/Await with Fetch**\
+↓\
+**7. Error handling**\
+↓\
+**8. HTTP methods**\
+↓\
+**9. Request options (**`method`**,&#x20;**`headers`**,&#x20;**`body`**)**\
+↓\
+**10. POST request**\
+↓\
+**11. PUT/PATCH request**\
+↓\
+**12. DELETE request**\
+↓\
+**13. Display API data in HTML using DOM**
+
+We can learn these **one by one**, using short definitions and complete real-world code examples.
+
+                            ---Completed---- 
