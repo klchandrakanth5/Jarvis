@@ -51,3 +51,22 @@ CSS is written in a separate file and linked to the HTML document.
 ## **4. Color Property**
 
 The `color` property is used to set the **foreground color** of an element.
+
+Hex Color System
+. Hex(Hexadecimal)
+color : #ff000;
+green :#00ff00;
+blue :#0000ff;
+
+SELECTORS 
+1. Univarsal Selector :-- *{}
+2. Element Selector :- h1{}
+3. ID  selector : - #myId{}
+4. Class Selectors 
+
+| Selector           | Syntax        | Simple Explanation                               | Example                                   |
+| ------------------ | ------------- | ------------------------------------------------ | ----------------------------------------- |
+| Universal Selector | `* {}`        | Selects all HTML elements on the page.           | Apply the same font to everything.        |
+| Element Selector   | `h1 {}`       | Selects all elements with a specific HTML tag.   | Change all heading colors.                |
+| ID Selector        | `#myId {}`    | Selects an element with a specific ID.           | Style a particular login button.          |
+| Class Selector     | `.myClass {}` | Selects all elements with a specific class name. | Apply the same style to multiple buttons. |
