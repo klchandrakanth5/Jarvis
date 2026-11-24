@@ -1,0 +1,32 @@
+h2{
+    text-align: center;
+    color: red;
+}
+p{
+    text-align: center;
+}
+h3{
+    text-align: center;
+    color: chartreuse;
+}
+.myname{
+    text-align: center;
+
+}
+#class1{
+    color: black;
+    text-decoration: underline;
+    text-decoration: overline;
+    text-decoration: wavy;
+    text-decoration: double;
+}
+a{
+    text-decoration: underline;
+    text-align: left;
+    color: red;
+}
+.my1{
+    color: black;
+    text-align: center;
+    font-weight: 900;
+}

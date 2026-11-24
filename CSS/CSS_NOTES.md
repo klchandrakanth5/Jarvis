@@ -70,3 +70,9 @@ SELECTORS
 | Element Selector   | `h1 {}`       | Selects all elements with a specific HTML tag.   | Change all heading colors.                |
 | ID Selector        | `#myId {}`    | Selects an element with a specific ID.           | Style a particular login button.          |
 | Class Selector     | `.myClass {}` | Selects all elements with a specific class name. | Apply the same style to multiple buttons. |
+
+
+                                   Text Alignment 
+                    text align :- left /right/center  
+                    start means :- left
+                    end means :-  right          
